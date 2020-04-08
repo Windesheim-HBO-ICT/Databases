@@ -1,5 +1,5 @@
 # Databases
-Gebruik van een MySQL database in een Java applicatie
+Uitleg over het gebruik van een MySQL database in een Java applicatie
 
 ## JDBC
 Om een connectie te maken vanuit een Java applicatie naar een MySQL database maken we gebruik van Java Database Connectivity (JDBC).
@@ -13,8 +13,12 @@ Om via JDBC connectie te kunnen maken met een MySQL database, is een MySQL datab
 Een driver die geschikt is voor MySQL is de Connector/J driver.
 Voor Windows is deze driver te installeren als onderdeel van de [MySQL installatie](https://dev.mysql.com/downloads/installer/), maar de driver is ook los te downloaden vanaf de [MySQL](https://dev.mysql.com/downloads/connector/j/) of de [MariaDB](https://mariadb.com/downloads/#connectors) website.
 
-## Dependency
-Nadat de Connector/J driver is gedownload en/of geinstalleerd, dient deze library (doorgaans als .jar file) toegevoegd te worden aan ons Java project als dependency.
+## Library toevoegen
+Nadat de Connector/J driver is gedownload en/of geïnstalleerd, dient deze library als mysql-connector-java-x.x.xx.jar bestand toegevoegd te worden aan ons Java project. Als onderdeel van de installatie van MySQL vind je het .jar bestand in de directory %ProgramFiles(x86)%\MySQL\Connector J 8.0.
+Hoe je het jar bestand toevoegt aan je project hangt af van welke IDE je gebruikt:
+- Voor IntelliJ, ga naar File -> Project Structure, selecteer aan de linkerkant Modules, ga naar het tabblad Dependencies en klik op het plusje om een JAR toe te voegen. Selecteer vervolgens het .jar bestand.
+- Voor NetBeans, ga naar File -> Project Properties, selecteer links de category 'Libraries', klik op het plusje bij classpath om een nieuwe JAR toe te voegen. Selecteer vervolgens het .jar bestand.
+- Voor een Java project in Visual Studio Code, open het .classpath bestand en voeg een classpathentry toe met kind="lib" en path naar het .jar bestand.
 
 ## De Java code
 
