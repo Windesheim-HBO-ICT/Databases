@@ -1,5 +1,6 @@
 # Databases
-Uitleg over het gebruik van een MySQL database in een Java applicatie
+Uitleg over het gebruik van een MySQL database in een Java applicatie.
+In de /src map staat een uitgewerkt voorbeeld waarin gebruik gemaakt wordt van een aparte Database klasse om alle acties richting de database af te handelen en een Repository klasse voor alle functionaliteit met betrekking tot (in dit geval) de Student.
 
 ## JDBC
 Om een connectie te maken vanuit een Java applicatie naar een MySQL database maken we gebruik van Java Database Connectivity (JDBC).
