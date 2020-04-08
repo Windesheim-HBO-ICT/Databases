@@ -62,7 +62,7 @@ resultSet.close();
 Nadat we klaar zijn met de ResultSet roepen we de close() methode aan om de ResultSet te sluiten en resources vrij te geven.
 
 ### Prepared statements
-Bij PHP heb je geleerd dat we Prepared Statments kunnen gebruiken om onder andere je code te beveiligen tegen SQL injection aanvallen. Bij Java gaat dat op een soortgelijk manier. We maken hiervoor een PreparedStatement object aan, koppelen de argumenten en voeren het PreparedStatement uit:
+Bij PHP heb je geleerd dat we Prepared Statements kunnen gebruiken om onder andere je code te beveiligen tegen SQL injection aanvallen. Bij Java gaat dat op een soortgelijk manier. We maken hiervoor een PreparedStatement object aan, koppelen de argumenten en voeren het PreparedStatement uit:
 ```java
 String query = "UPDATE tabelnaam SET kolomnaam = ? WHERE id = ?";
 
