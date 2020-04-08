@@ -74,6 +74,21 @@ ResultSet resultSet = statement.executeQuery();
 ```
 Het eerste argument van de setString en setInt methodes is de parameterIndex, oftewel het volgnummer van het vraagteken in de query. Deze begint bij 1. Het tweede argument is de waarde die we willen toekennen. Nadat we executeQuery hebben uitgevoerd kunnen we met een while-loop door de records heen lopen, zoals in het voorgaande voorbeeld.
 
+### Transactions
+Om de integriteit van je data te borgen, kan het nodig zijn om meerdere query's als één batch uit te voeren en ook in zijn geheel vast te leggen (commit) of in zijn geheel terug te draaien als een query mislukt (rollback). Denk bijvoorbeeld aan een tabel met orders en een tabel met orderregels. We willen geen orderregels toevoegen als het toevoegen van de order is mislukt, maar andersom willen we ook geen lege order overhouden als het toevoegen van de orderregels mislukt. Om deze query's als één geheel uit te voeren kun je gebruik maken van transacties:
+```
+try {
+    conn.setAutoCommit(false);
+
+    [voer hier meerdere query's achter elkaar uit]
+    
+    conn.commit();
+}
+catch (SQLException ex) {
+    conn.rollback();
+}
+```
+
 ### Connectie sluiten
 Nadat we klaar zijn met de connectie, is het goed gebruik om de connectie te sluiten zodat resources worden vrijgegeven:
 ```java
