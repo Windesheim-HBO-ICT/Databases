@@ -76,7 +76,7 @@ Het eerste argument van de setString en setInt methodes is de parameterIndex, of
 
 ### Transactions
 Om de integriteit van je data te borgen, kan het nodig zijn om meerdere query's als één batch uit te voeren en ook in zijn geheel vast te leggen (commit) of in zijn geheel terug te draaien als een query mislukt (rollback). Denk bijvoorbeeld aan een tabel met orders en een tabel met orderregels. We willen geen orderregels toevoegen als het toevoegen van de order is mislukt, maar andersom willen we ook geen lege order overhouden als het toevoegen van de orderregels mislukt. Om deze query's als één geheel uit te voeren kun je gebruik maken van transacties:
-```
+```java
 try {
     conn.setAutoCommit(false);
 
@@ -93,14 +93,4 @@ catch (SQLException ex) {
 Nadat we klaar zijn met de connectie, is het goed gebruik om de connectie te sluiten zodat resources worden vrijgegeven:
 ```java
 conn.close();
-```
-
-### Foutafhandeling
-Wanneer er iets mis gaat bij het uitvoeren van de query, dan levert dat in de meeste gevallen een SQLException op. Om deze fouten netjes af te vangen verpakken we het geheel in een try-catch-block:
-```java
-try {
-    [code om de query uit te voeren]
-} catch (SQLException ex) {
-    System.out.println(ex);
-}
 ```
