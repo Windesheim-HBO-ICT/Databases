@@ -37,7 +37,9 @@ Connection conn = DriverManager.getConnection(url, user, password);
 De variabele 'conn' bevat nu dus een Connection object die we kunnen gebruiken om query's uit te voeren.
 
 ### Een query uitvoeren zonder resultaat
-Om een query uit te voeren hebben we allereerst een Statement object nodig. Deze maken we aan door conn.CreateStatement() methode aan te roepen. Wanneer we een query willen uitvoeren zonder resultaat (een INSERT, UPDATE of DELETE query) gebruiken we de executeUpdate() methode van het Statement object:
+Om een query uit te voeren hebben we allereerst een Statement object nodig.
+Deze maken we aan door conn.CreateStatement() methode aan te roepen.
+Wanneer we een query willen uitvoeren zonder resultaat (bijvoorbeeld een INSERT, UPDATE of DELETE query), dan gebruiken we de executeUpdate() methode van het Statement object:
 ```java
 Statement statement = conn.createStatement();
 int aantal = statement.executeUpdate("INSERT INTO tabelnaam (kolom1, kolom2) VALUES ('waarde1', 'waarde2')");
@@ -47,7 +49,9 @@ Het is raadzaam om in de code te controleren of dit aantal klopt.
 Voeren we bijvoorbeeld een INSERT query uit om één record toe te voegen, dan controleren we of het aantal bewerkte records ook inderdaad 1 is.
 
 ### Een query uitvoeren met resultaat
-Wanneer we een query willen uitvoeren die wel een resultaat terug geeft (SELECT) maken we gebruik van de executeQuery() methode van het Statement object. Deze levert ons een ResultSet waar we met een while-loop doorheen kunnen stappen. Elke iteratie van de while-loop geeft ons het volgende record uit de tabel, tot er geen records meer zijn:
+Wanneer we een query willen uitvoeren die wel een resultaat terug geeft (bijvoorbeeld een SELECT query), dan maken we gebruik van de executeQuery() methode van het Statement object.
+Deze levert ons een ResultSet waar we met een while-loop doorheen kunnen stappen.
+Elke iteratie van de while-loop geeft ons het volgende record uit de tabel, tot er geen records meer zijn:
 ```java
 Statement statement = conn.createStatement();
 ResultSet resultSet = statement.executeQuery("SELECT kolomnaam FROM tabelnaam");
@@ -72,10 +76,16 @@ statement.setInt(2, 100);
 
 ResultSet resultSet = statement.executeQuery();
 ```
-Het eerste argument van de setString en setInt methodes is de parameterIndex, oftewel het volgnummer van het vraagteken in de query. Deze begint bij 1. Het tweede argument is de waarde die we willen toekennen. Nadat we executeQuery hebben uitgevoerd kunnen we met een while-loop door de records heen lopen, zoals in het voorgaande voorbeeld.
+Het eerste argument van de setString en setInt methodes is de parameterIndex, oftewel het volgnummer van het vraagteken in de query.
+Deze begint bij 1.
+Het tweede argument is de waarde die we willen toekennen.
+Nadat we executeQuery hebben uitgevoerd kunnen we met een while-loop door de records heen lopen, zoals in het voorgaande voorbeeld.
 
 ### Transactions
-Om de integriteit van je data te borgen, kan het nodig zijn om meerdere query's als één batch uit te voeren en ook in zijn geheel vast te leggen (commit) of in zijn geheel terug te draaien als een query mislukt (rollback). Denk bijvoorbeeld aan een tabel met orders en een tabel met orderregels. We willen geen orderregels toevoegen als het toevoegen van de order is mislukt, maar andersom willen we ook geen lege order overhouden als het toevoegen van de orderregels mislukt. Om deze query's als één geheel uit te voeren kun je gebruik maken van transacties:
+Om de integriteit van je data te borgen, kan het nodig zijn om meerdere query's als één batch uit te voeren en ook in zijn geheel vast te leggen (commit) of in zijn geheel terug te draaien als één van de query's in de batch mislukt (rollback).
+Denk bijvoorbeeld aan een tabel met orders en een tabel met orderregels.
+We willen geen orderregels toevoegen als het toevoegen van de order is mislukt, maar andersom willen we ook geen lege order overhouden als het toevoegen van de orderregels mislukt.
+Om deze query's als één geheel uit te voeren kun je gebruik maken van transacties:
 ```java
 try {
     conn.setAutoCommit(false);
