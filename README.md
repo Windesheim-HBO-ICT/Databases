@@ -12,7 +12,9 @@ Voor elk database management systeem (bijv. Microsoft SQL, MySQL, Oracle, Sybase
 ## Connector/J database driver voor MySQL (of MariaDB)
 Om via JDBC connectie te kunnen maken met een MySQL database, is een MySQL database driver nodig.
 Een driver die geschikt is voor MySQL is de Connector/J driver.
-Voor Windows is deze driver te installeren als onderdeel van de [MySQL installatie](https://dev.mysql.com/downloads/installer/), maar de driver is ook los te downloaden vanaf de [MySQL](https://dev.mysql.com/downloads/connector/j/) of de [MariaDB](https://mariadb.com/downloads/#connectors) website.
+Voor Windows is deze driver te installeren als onderdeel van de [MySQL installatie](https://dev.mysql.com/downloads/installer/).
+Mocht je MySQL al hebben geïnstalleerd zonder de Connector/J optie aan te vinken, dan kun je de installer opnieuw uitvoeren en deze optie alsnog toevoegen.
+De driver is ook los te downloaden vanaf de [MySQL](https://dev.mysql.com/downloads/connector/j/) of de [MariaDB](https://mariadb.com/downloads/#connectors) website.
 
 ## Library toevoegen
 Nadat de Connector/J driver is gedownload en/of geïnstalleerd, dient deze library als mysql-connector-java-x.x.xx.jar bestand toegevoegd te worden aan ons Java project.
