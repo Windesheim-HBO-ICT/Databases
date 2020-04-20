@@ -3,11 +3,11 @@ Uitleg over het gebruik van een MySQL database in een Java applicatie.
 In de /src map staat een uitgewerkt voorbeeld waarin gebruik gemaakt wordt van een aparte Database klasse om alle acties richting de database af te handelen en een Repository klasse voor alle functionaliteit met betrekking tot (in dit geval) de Student.
 
 ## JDBC
-Om een connectie te maken vanuit een Java applicatie naar een MySQL database maken we gebruik van Java Database Connectivity (JDBC).
+Om een connectie te maken vanuit een Java applicatie naar een MySQL database maken we gebruik van JDBC (Java Database Connectivity).
 Dit biedt een generieke API (Application Programming Interface) voor connectie naar verschillende soorten databases.
 Dit betekent dat de aanroep naar de API vanuit onze Java code uniform is, maar dat JDBC met verschillende soorten databases kan communiceren.
 JDBC gebruikt hiervoor database drivers.
-Voor elk database management systeem (bijv. Microsoft SQL, MySQL, Oracle, Sybase, etc) is een andere driver nodig.
+Voor elk database management systeem (Microsoft SQL, MySQL, Oracle, Sybase, etc) is een andere database driver nodig.
 
 ## Connector/J database driver voor MySQL (of MariaDB)
 Om via JDBC connectie te kunnen maken met een MySQL database, is een MySQL database driver nodig.
@@ -22,7 +22,7 @@ Wanneer je Connector/J hebt geïnstalleerd als onderdeel van de MySQL installati
 Hoe je het .jar bestand toevoegt aan je project hangt af van welke IDE je gebruikt:
 - **IntelliJ**: ga naar File -> Project Structure, selecteer aan de linkerkant Modules, ga naar het tabblad Dependencies en klik op het plusje om een JAR toe te voegen. Selecteer vervolgens het .jar bestand.
 - **NetBeans**: ga naar File -> Project Properties, selecteer links de category 'Libraries', klik op het plusje bij classpath om een nieuwe JAR toe te voegen. Selecteer vervolgens het .jar bestand.
-- **Visual Studio Code**: open het .classpath bestand en voeg een classpathentry toe met kind="lib" en path naar het .jar bestand.
+- **Visual Studio Code**: open het .classpath bestand van je Java project en voeg een classpathentry toe met kind="lib" en path naar het .jar bestand.
 
 ## De Java code
 
@@ -87,13 +87,13 @@ Nadat we executeQuery hebben uitgevoerd kunnen we met een while-loop door de rec
 ### Transactions
 Om de integriteit van je data te borgen, kan het nodig zijn om meerdere query's als één batch uit te voeren en ook in zijn geheel vast te leggen (commit) of in zijn geheel terug te draaien als één van de query's in de batch mislukt (rollback).
 Denk bijvoorbeeld aan een tabel met orders en een tabel met orderregels.
-We willen geen orderregels toevoegen als het toevoegen van de order is mislukt, maar andersom willen we ook geen lege order overhouden als het toevoegen van de orderregels mislukt.
+We willen geen orderregels toevoegen als het toevoegen van de order is mislukt, maar andersom willen we ook geen lege, of een halve order overhouden als het toevoegen van de orderregels mislukt.
 Om deze query's als één geheel uit te voeren kun je gebruik maken van transacties:
 ```java
 try {
     conn.setAutoCommit(false);
 
-    [voer hier meerdere query's achter elkaar uit]
+    // voer hier meerdere query's achter elkaar uit
     
     conn.commit();
 }
@@ -103,7 +103,7 @@ catch (SQLException ex) {
 ```
 
 ### Connectie sluiten
-Nadat we klaar zijn met de connectie, is het goed gebruik om de connectie te sluiten zodat resources worden vrijgegeven:
+Als we klaar zijn met de connectie, is het goed gebruik om de connectie te sluiten zodat resources worden vrijgegeven:
 ```java
 conn.close();
 ```
