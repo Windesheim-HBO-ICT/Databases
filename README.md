@@ -20,7 +20,7 @@ De driver is ook los te downloaden vanaf de [MySQL](https://dev.mysql.com/downlo
 Nadat de Connector/J driver is gedownload en/of geïnstalleerd, dient deze library als mysql-connector-java-8.0.xx.jar bestand toegevoegd te worden aan ons Java project.
 Wanneer je Connector/J hebt geïnstalleerd als onderdeel van de MySQL installatie, dan vind je het .jar bestand in de directory %ProgramFiles(x86)%\MySQL\Connector J 8.0.
 Hoe je het .jar bestand toevoegt aan je project hangt af van welke IDE je gebruikt:
-- **IntelliJ**: ga naar File -> Project Structure, selecteer aan de linkerkant Modules, ga naar het tabblad Dependencies en klik op het plusje om een JAR toe te voegen. Selecteer vervolgens het .jar bestand.
+- **IntelliJ**: ga naar File -> Project Structure, selecteer aan de linkerkant Modules, ga naar het tabblad Dependencies en klik op het plusje aan de rechter kant om een JAR toe te voegen. Selecteer vervolgens het .jar bestand.
 - **NetBeans**: ga naar File -> Project Properties, selecteer links de category 'Libraries', klik op het plusje bij classpath om een nieuwe JAR toe te voegen. Selecteer vervolgens het .jar bestand.
 - **Visual Studio Code**: open het .classpath bestand van je Java project en voeg een classpathentry toe met kind="lib" en path naar het .jar bestand.
 
